@@ -1,0 +1,70 @@
+﻿@model IEnumerable<BCTwo.Models.EmployeeIndexView>
+
+@{
+    ViewBag.Title = "職員列表";
+}
+
+<div class="container">
+    <h2 id="hh">員工資料列表</h2>
+
+    <p>
+        @*@Html.ActionLink("Create New", "Create")*@
+        <a href="@Url.Content("~/Employee/Create")"><i class="glyphicon glyphicon-plus-sign"></i></a>
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Position)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Position)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Edit", new { id = item.ID }, new { @class = "glyphicon glyphicon-pencil" }) |
+                    @Html.ActionLink(" ", "Details", new { id = item.ID }, new { @class = "glyphicon glyphicon-info-sign" }) |
+                    @Html.ActionLink(" ", "Delete", new { id = item.ID }, new { @class = "glyphicon glyphicon-remove-sign" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+@section styles{
+    <style>
+        #hh{
+            text-align:center;
+        }
+    </style>
+    
+    }
